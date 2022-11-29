@@ -400,7 +400,7 @@ class DPMSolver(nn.Module):
 
         for i in range(len(orders)):
             eps_cache = {}
-            t, t_next = ts[i], ts[i + 1]
+            t, t_next = ts[i].detach().clone(), ts[i + 1].detach().clone()
             if eta:
                 sd, su = get_ancestral_step(self.sigma(t), self.sigma(t_next), eta)
                 t_next_ = torch.minimum(t_end, self.t(sd))
