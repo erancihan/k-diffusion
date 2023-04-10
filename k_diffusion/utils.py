@@ -11,6 +11,10 @@ import torch
 from torch import nn, optim
 from torch.utils import data
 from torchvision.transforms import functional as TF
+from packaging import version
+
+
+needs_mps_fixes = version.parse(torch.__version__) < version.parse("2.0")
 
 
 def from_pil_image(x):
@@ -45,7 +49,7 @@ def append_dims(x, target_dims):
     expanded = x[(...,) + (None,) * dims_to_append]
     # MPS will get inf values if it tries to index into the new axes, but detaching fixes this.
     # https://github.com/pytorch/pytorch/issues/84364
-    return expanded.detach().clone() if expanded.device.type == 'mps' else expanded
+    return expanded.detach().clone() if needs_mps_fixes and expanded.device.type == 'mps' else expanded
 
 
 def n_params(module):
