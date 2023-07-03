@@ -1,0 +1,41 @@
+diff --git a/webui-macos-env.sh b/webui-macos-env.sh
+index 6354e73b..a3779534 100644
+--- a/webui-macos-env.sh
++++ b/webui-macos-env.sh
+@@ -12,8 +12,8 @@ fi
+ export install_dir="$HOME"
+ export COMMANDLINE_ARGS="--skip-torch-cuda-test --upcast-sampling --no-half-vae --use-cpu interrogate"
+ export TORCH_COMMAND="pip install torch==2.0.1 torchvision==0.15.2"
+-export K_DIFFUSION_REPO="https://github.com/brkirch/k-diffusion.git"
+-export K_DIFFUSION_COMMIT_HASH="51c9778f269cedb55a4d88c79c0246d35bdadb71"
++export K_DIFFUSION_REPO="https://github.com/erancihan/k-diffusion.git"
++export K_DIFFUSION_COMMIT_HASH="b694dbf289fd967cebee54a3a1c3b8c7d4149bf5"
+ export PYTORCH_ENABLE_MPS_FALLBACK=1
+ 
+ ####################################################################
+diff --git a/webui-user.bat b/webui-user.bat
+index e5a257be..79b652fe 100644
+--- a/webui-user.bat
++++ b/webui-user.bat
+@@ -5,4 +5,7 @@ set GIT=
+ set VENV_DIR=
+ set COMMANDLINE_ARGS=
+ 
++set K_DIFFUSION_REPO="https://github.com/erancihan/k-diffusion.git"
++set K_DIFFUSION_COMMIT_HASH="b694dbf289fd967cebee54a3a1c3b8c7d4149bf5"
++
+ call webui.bat
+diff --git a/webui-user.sh b/webui-user.sh
+index 70306c60..58be6b69 100644
+--- a/webui-user.sh
++++ b/webui-user.sh
+@@ -31,7 +31,8 @@
+ #export REQS_FILE="requirements_versions.txt"
+ 
+ # Fixed git repos
+-#export K_DIFFUSION_PACKAGE=""
++export K_DIFFUSION_REPO="https://github.com/erancihan/k-diffusion.git"
++export K_DIFFUSION_COMMIT_HASH="b694dbf289fd967cebee54a3a1c3b8c7d4149bf5"
+ #export GFPGAN_PACKAGE=""
+ 
+ # Fixed git commits
