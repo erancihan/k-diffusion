@@ -8,4 +8,5 @@ data
 wandb/*
 *.csv
 .env
+*.safetensors
 /build/
